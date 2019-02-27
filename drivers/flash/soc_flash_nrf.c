@@ -466,6 +466,7 @@ static int write_in_timeslice(off_t addr, const void *data, size_t len)
 static int erase_op(void *context)
 {
 	u32_t pg_size = CODEPAGESIZE;
+	u32_t prev_nvmc_cfg;
 	struct flash_context *e_ctx = context;
 
 #if defined(CONFIG_SOC_FLASH_NRF_RADIO_SYNC)
@@ -479,7 +480,7 @@ static int erase_op(void *context)
 #endif /* CONFIG_SOC_FLASH_NRF_RADIO_SYNC */
 
 	/* Enable erase operation */
-	nvmc_config_set(EEN);
+	prev_nvmc_cfg = nvmc_config_set(EEN);
 
 #ifdef CONFIG_SOC_FLASH_NRF_UICR
 	if (e_ctx->flash_addr == (off_t)NRF_UICR) {
@@ -518,7 +519,7 @@ static int erase_op(void *context)
 
 	} while (e_ctx->len > 0);
 
-	nvmc_config_set(REN);
+	nvmc_config_set(prev_nvmc_cfg);
 
 	return (e_ctx->len > 0) ? FLASH_OP_ONGOING : FLASH_OP_DONE;
 }
