@@ -163,17 +163,17 @@ typedef enum {
   * @brief FICR_INFO [INFO] (Device info)
   */
 typedef struct {
-  __IM  uint32_t  RESERVED;
-  __IM  uint32_t  DEVICEID[2];                  /*!< (@ 0x00000004) Description collection: Device identifier                  */
-  __IM  uint32_t  PART;                         /*!< (@ 0x0000000C) Part code                                                  */
-  __IM  uint32_t  VARIANT;                      /*!< (@ 0x00000010) Part Variant, Hardware version and Production
+  __IM  uint32_t  RESERVED[128];                /*!< Size = 128*4 = 512 (0x200)                                                */
+  __IM  uint32_t  DEVICEID[2];                  /*!< (@ 0x00000204) Description collection: Device identifier                  */
+  __IM  uint32_t  PART;                         /*!< (@ 0x0000020C) Part code                                                  */
+  __IM  uint32_t  VARIANT;                      /*!< (@ 0x00000210) Part Variant, Hardware version and Production
                                                                     configuration                                              */
-  __IM  uint32_t  PACKAGE;                      /*!< (@ 0x00000014) Package option                                             */
-  __IM  uint32_t  RAM;                          /*!< (@ 0x00000018) RAM variant                                                */
-  __IM  uint32_t  FLASH;                        /*!< (@ 0x0000001C) Flash variant                                              */
-  __IM  uint32_t  CODEPAGESIZE;                 /*!< (@ 0x00000020) Code memory page size                                      */
-  __IM  uint32_t  CODESIZE;                     /*!< (@ 0x00000024) Code memory size                                           */
-  __IM  uint32_t  DEVICETYPE;                   /*!< (@ 0x00000028) Device type                                                */
+  __IM  uint32_t  PACKAGE;                      /*!< (@ 0x00000214) Package option                                             */
+  __IM  uint32_t  RAM;                          /*!< (@ 0x00000218) RAM variant                                                */
+  __IM  uint32_t  FLASH;                        /*!< (@ 0x0000021C) Flash variant                                              */
+  __IM  uint32_t  CODEPAGESIZE;                 /*!< (@ 0x00000220) Code memory page size                                      */
+  __IM  uint32_t  CODESIZE;                     /*!< (@ 0x00000224) Code memory size                                           */
+  __IM  uint32_t  DEVICETYPE;                   /*!< (@ 0x00000228) Device type                                                */
 } FICR_INFO_Type;                               /*!< Size = 44 (0x2c)                                                          */
 
 
