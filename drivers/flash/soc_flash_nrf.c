@@ -160,6 +160,7 @@ static u32_t nvmc_config_set(enum nvmc_config mode)
 #else
 	const u32_t cfg = NRF_NVMC->CONFIG;
 	NRF_NVMC->CONFIG = mode;
+	NRF_NVMC->CONFIGNS = mode;
 #endif
 	nvmc_wait_ready();
 	return cfg;
